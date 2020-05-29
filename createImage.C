@@ -18,6 +18,9 @@
 #include "ray.H"
 #include "color.H"
 #include "camera.H"
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
  
