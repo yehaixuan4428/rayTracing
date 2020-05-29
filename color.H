@@ -16,17 +16,28 @@
 
 #include "vec3.H"
 #include <fstream>
+#include "rtweekend.H"
 
 void write_color(ostream& os, const color& pixel) {
-    os << int(255.999*pixel.x()) << " "
-       << int(255.999*pixel.y()) << " "
-       << int(255.999*pixel.z()) << '\n';
+    os << int(256*clip(pixel.x(), 0.0, 0.999)) << " "
+       << int(256*clip(pixel.y(), 0.0, 0.999)) << " "
+       << int(256*clip(pixel.z(), 0.0, 0.999)) << '\n';
 }
 
 void write_color_toFile(ofstream& os, const color& pixel) {
-    os << int(255.999*pixel.x()) << " "
-       << int(255.999*pixel.y()) << " "
-       << int(255.999*pixel.z()) << '\n';
+    os << int(256*clip(pixel.x(), 0.0, 0.999)) << " "
+       << int(256*clip(pixel.y(), 0.0, 0.999)) << " "
+       << int(256*clip(pixel.z(), 0.0, 0.999)) << '\n';
+}
+
+void write_color(ostream& os, const color& pixel, int nSamples) {
+    color avgColor = pixel*(1.0/nSamples);
+    write_color(os, avgColor);
+}
+
+void write_color_toFile(ofstream& os, const color& pixel, int nSamples) {
+    color avgColor = pixel*(1.0/nSamples);
+    write_color_toFile(os, avgColor);
 }
 
 #endif

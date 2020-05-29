@@ -3,6 +3,7 @@
 
 #include<cmath>
 #include<iostream>
+#include "rtweekend.H"
 
 using namespace std;
 
@@ -25,7 +26,6 @@ class vec3 {
      inline double length() const;
      inline double lengthSqr() const;
 
-
      double e[3];
 };
 
@@ -33,18 +33,5 @@ class vec3 {
 
 using point3 = vec3;
 using color = vec3;
-
-/* inline vec3 opeartor+(const vec3& u, const vec3& v);
- * inline vec3 opeartor-(const vec3& u, const vec3& v);
- * inline vec3 opeartor*(const vec3& u, const vec3& v);
- * inline vec3 opeartor*(double t, const vec3& v);
- * inline vec3 opeartor*(const vec3& v, double t);
- * inline vec3 opeartor/(double t, const vec3& v);
- *
- * inline double dot(const vec3& u, const vec3& v);
- * inline vec3 cross(const vec3& u, const vec3& v);
- * inline vec3 unit(const vec3& v);
- * inline ostream& operator<<(ostream& os, const vec3& v);
- *  */
 
 #endif

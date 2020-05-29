@@ -88,3 +88,10 @@ inline ostream& operator<<(ostream& os, const vec3& v) {
     return os;
 }
 
+inline static vec3 randomInUnitSphere() {
+    while (true) {
+        vec3 p(random_double(-1.0, 1.0), random_double(-1.0, 1.0), random_double(-1.0, 1.0));
+        if (p.lengthSqr() < 1) return p;
+    }
+}
+

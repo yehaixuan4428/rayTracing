@@ -1,5 +1,10 @@
-createImage: createImage.C
-	g++ -o createImage createImage.C 
+SHELL=/bin/zsh
+
+TARGET = createImage
+SOURCES = $(shell echo *.C)
+
+$(TARGET): $(SOURCES)
+	g++ -o $(TARGET) $(SOURCES)
 
 clean:
-	rm createImage
+	rm $(TARGET)
