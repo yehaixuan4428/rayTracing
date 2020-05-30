@@ -6,7 +6,7 @@ bool metal::scatter(
         color& attenuation, 
         ray& scattered) const {
     vec3 scatterDir = reflect(unit(r_in.direction()), rec.normal);
-    scattered = ray(rec.p, scatterDir);
+    scattered = ray(rec.p, scatterDir + fuzz*randomInUnitSphere());
     attenuation = albedo;
-    return (dot(scattered, rec.normal) > 0);
+    return (dot(scattered.direction(), rec.normal) > 0);
 }
