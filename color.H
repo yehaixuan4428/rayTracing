@@ -32,15 +32,15 @@ void write_color_toFile(ofstream& os, const color& pixel) {
 }
 
 void write_color(ostream& os, const color& pixel, int nSamples) {
-    os << int(256*clip(pixel.x()/nSamples, 0.0, 0.999)) << " "
-       << int(256*clip(pixel.y()/nSamples, 0.0, 0.999)) << " "
-       << int(256*clip(pixel.z()/nSamples, 0.0, 0.999)) << '\n';
+    os << int(256*clip(sqrt(pixel.x()/nSamples), 0.0, 0.999)) << " "
+       << int(256*clip(sqrt(pixel.y()/nSamples), 0.0, 0.999)) << " "
+       << int(256*clip(sqrt(pixel.z()/nSamples), 0.0, 0.999)) << '\n';
 }
 
 void write_color_toFile(ofstream& os, const color& pixel, int nSamples) {
-    os << int(256*clip(pixel.x()/nSamples, 0.0, 0.999)) << " "
-       << int(256*clip(pixel.y()/nSamples, 0.0, 0.999)) << " "
-       << int(256*clip(pixel.z()/nSamples, 0.0, 0.999)) << '\n';
+    os << int(256*clip(sqrt(pixel.x()/nSamples), 0.0, 0.999)) << " "
+       << int(256*clip(sqrt(pixel.y()/nSamples), 0.0, 0.999)) << " "
+       << int(256*clip(sqrt(pixel.z()/nSamples), 0.0, 0.999)) << '\n';
 }
 
 #endif

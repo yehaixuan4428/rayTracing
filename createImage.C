@@ -28,10 +28,15 @@ color rayColor(const ray& r, const hittable& world, int depth) {
     if (depth <= 0) return color(0, 0, 0);
 
     hitRecord rec;
-    if (world.hit(r, 0, infinity, rec)) {
-        point3 target = rec.p + rec.normal + randomInUnitSphere();
-        return 0.5*rayColor(ray(rec.p, target - rec.p), world, depth - 1);
-        // return 0.5*(rec.normal + color(1.0, 1.0, 1.0));
+    if (world.hit(r, 0.001, infinity, rec)) {
+        ray scattered;
+        color attenuation;
+        if (rec.matPtr->scatter(r, rec, attenuation, scattered)) {
+            return attenuation*rayColor(scattered, world, depth - 1);
+        }
+        return color(0, 0, 0);
+        /* point3 target = rec.p + rec.normal + randomUnitVector();
+         * return 0.5*rayColor(ray(rec.p, target - rec.p), world, depth - 1); */
     }
 
     vec3 unitDir = unit(r.direction());

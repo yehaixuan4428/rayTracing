@@ -95,3 +95,15 @@ inline static vec3 randomInUnitSphere() {
     }
 }
 
+inline static vec3 randomUnitVector() {
+    double a = random_double(0, 2.0*pi);
+    double z = random_double(-1.0, 1.0);
+    double r = sqrt(1.0 - z*z);
+
+    return vec3(r*cos(a), r*sin(a), z);
+}
+
+inline vec3 reflect(const vec3& v, const vec3& n) {
+    return v - 2.0*dot(v, n)*n;
+}
+
